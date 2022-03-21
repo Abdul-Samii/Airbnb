@@ -11,7 +11,7 @@ export const Header=()=>{
                 layout="fill"
                 objectFit="contain"
                 objectPosition="left"
-
+                alt='image'
             />
         </div>
 

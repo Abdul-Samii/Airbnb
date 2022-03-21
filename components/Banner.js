@@ -7,6 +7,7 @@ export const Banner = () =>{
                 src="/banner.webp"
                 layout='fill'
                 objectFit='cover'
+                alt='image'
             />
             <div className='absolute top-1/2 w-full text-center'>
                 <p className='text-sm sm:text-lg'>Not sure where to go?</p>

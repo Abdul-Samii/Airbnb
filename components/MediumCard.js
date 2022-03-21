@@ -9,6 +9,7 @@ export const MediumCard=({img,title})=>{
                 layout="fill"
                 objectFit='contain'
                 className='rounded-xl'
+                alt='image'
             />
             
         </div>

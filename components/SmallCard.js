@@ -11,6 +11,7 @@ export const SmallCard=({img,location,distance})=>{
                 src={img}
                 layout="fill"
                 className='rounded-lg'
+                alt='image'
             />
         </div>
 

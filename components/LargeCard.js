@@ -9,6 +9,7 @@ export const LargeCard=({img,title,description,buttonText})=>{
                     layout="fill"
                     objectFit='cover'
                     className='rounded-2xl py-16 cursor-pointer'
+                    alt='image'
                 />
             </div>
 
