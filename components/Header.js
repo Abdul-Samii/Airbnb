@@ -1,29 +1,37 @@
 import Image from "next/image";
 import {SearchIcon,GlobeAltIcon,MenuIcon,UserCircleIcon, UsersIcon} from '@heroicons/react/solid';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import {useRouter} from 'next/router'
 
-export const Header=()=>{
+export const Header=({placeholder})=>{
     const [Search,setSearch] = useState("");
     const [startDate,setStartDate] = useState(new Date());
     const [endDate,setEndDate] = useState(new Date());
     const [numOfGuests,setNumOfGuests] = useState(1);
-    const router = useRouter();
 
+    const [startDate1,setStartDate1] = useState();
+    const [endDate1,setEndDate1] = useState();
+
+    const router = useRouter();
+    console.log("Yooo ",startDate)
     const selectionRange={
         startDate:startDate,
         endDate:endDate,
         key:'selection'
     }
 
-    const handleSelection=(ranges)=>{
-        setStartDate(ranges.selection.startDate)
-        setEndDate(ranges.selection.endDate)
-        console.log("text ",ranges)
+    const handleSelection=async(ranges)=>{
+        const dat = ranges.selection.startDate;
+            setStartDate(dat)
+            setEndDate(ranges.selection.endDate)
+       
+        
     }
+
+    
 
     const handleResetSearch=()=>{
         setSearch("")
@@ -34,8 +42,8 @@ export const Header=()=>{
             pathname:"/search",
             query:{
                 location:Search,
-                startDate:startDate,
-                endDate:endDate.toISOString,
+                startDate:startDate.toISOString(),
+                endDate:endDate.toISOString(),
                 numOfGuests,
             },
         });
@@ -59,7 +67,7 @@ export const Header=()=>{
             <input 
             value={Search}
             onChange={(e)=>setSearch(e.target.value)}
-            type="text" placeholder="Start your search" className="pl-5 bg-transparent
+            type="text" placeholder={placeholder || "Start your search"} className="pl-5 bg-transparent
             outline-none flex-grow text-gray-600 placeholder-gray-400"/>
             <SearchIcon className="h-8 bg-red-400 text-white rounded-full 
             cursor-pointer hidden md:inline-flex md:mx-2"/>
